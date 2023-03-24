@@ -13,7 +13,11 @@ import streamlit as st
 
 
 # creating a dataframe
+<<<<<<< HEAD:Task  2 - Unemployment Analysis with Python/ua.py
 df = pd.read_csv('Task  2 - Unemployment Analysis with Python/Unemployment in India.csv') 
+=======
+df = pd.read_csv('Task  2 - Unemployment Analysis with Python/Webapp/Unemployment in India.csv') 
+>>>>>>> f1b500592f8aaa76cbe8ed0290a9f31706d3cad8:Task  2 - Unemployment Analysis with Python/Webapp/ua.py
 st.title('Unemployment Analysis of India from May 2019 - June 2020')
 
 # get index number of the rows which have null values & give the output in a list
