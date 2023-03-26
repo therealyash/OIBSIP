@@ -38,8 +38,8 @@ def text_transform(text):
 
     return " ".join(y)
 
-tfidf = pickle.load(open('vectorizer.pkl','rb'))
-model = pickle.load(open('model.pkl','rb'))
+tfidf = pickle.load(open('Task_2/Email-Spam-Detection-Webapp/vectorizer.pkl','rb'))
+model = pickle.load(open('Task_2/Email-Spam-Detection-Webapp/model.pkl','rb'))
 
 st.title('Email Spam Detection')
 from PIL import Image
