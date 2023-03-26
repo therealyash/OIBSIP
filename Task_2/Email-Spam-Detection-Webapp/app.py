@@ -52,7 +52,7 @@ image = Image.open('Task_2/Email-Spam-Detection-Webapp/email_spam.jpg')
 st.image(image)
 
 st.markdown('Enter text below to check if it is a spam email or not.')
-input_mail = st.text_area()
+input_mail = st.text_area('')
 
 
 if st.button('Predict'):
