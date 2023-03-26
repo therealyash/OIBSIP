@@ -44,7 +44,7 @@ model = pickle.load(open('Task_2/Email-Spam-Detection-Webapp/model.pkl','rb'))
 st.title('Email Spam Detection')
 from PIL import Image
 
-image = Image.open('email_spam.jpg')
+image = Image.open('Task_2/Email-Spam-Detection-Webapp/email_spam.jpg')
 
 st.image(image)
 
