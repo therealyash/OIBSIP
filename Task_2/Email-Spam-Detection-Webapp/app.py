@@ -1,0 +1,71 @@
+import streamlit as st
+import pickle
+import string
+from nltk.corpus import stopwords
+import nltk
+from nltk.stem.porter import PorterStemmer
+import sklearn
+ps = PorterStemmer()
+
+
+def text_transform(text):
+    # lower case
+    text = text.lower()
+
+    # tokenziation
+    text = nltk.word_tokenize(text)
+
+    # removing special characters
+    y = []
+    for i in text:
+        if i.isalnum():
+            y.append(i)
+
+    # removing stop words and punctuation
+    text = y[:]
+    y.clear()
+
+    for i in text:
+        if i not in stopwords.words('english') and i not in string.punctuation:
+            y.append(i)
+
+    # stemming
+    text = y[:]
+    y.clear()
+
+    for i in text:
+        y.append(ps.stem(i))
+
+    return " ".join(y)
+
+tfidf = pickle.load(open('vectorizer.pkl','rb'))
+model = pickle.load(open('model.pkl','rb'))
+
+st.title('Email Spam Detection')
+from PIL import Image
+
+image = Image.open('email_spam.jpg')
+
+st.image(image)
+
+
+input_mail = st.text_area('Enter the mail text')
+
+
+if st.button('Predict'):
+
+
+    # preprocess the text
+    mail_transform = text_transform(input_mail)
+
+    vector = tfidf.transform([mail_transform])
+
+    # predict
+    result = model.predict(vector)[0]
+
+    # result
+    if result == 1:
+        st.header('Spam')
+    else:
+        st.header('Not a Spam')
+
